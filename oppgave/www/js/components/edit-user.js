@@ -7,27 +7,26 @@ class EditUser extends LitElement {
     };
   }
 
-  // din kode her
+  // Adding text-fields for user information
+  // Availability to click registered names to add firstname and lastname
+  // Inspired by imt2291-eksamen2020 https://bitbucket.org/HermanDyrkorn/, Herman Andersen Dyrkorn
 
   render() {
     return html`
-    <head>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    </head>
     <form onsubmit="javascript: return false;" id="userForm" method="POST">
-    <div class="form-group pt-1 ml-5" style="width: 12rem;">
+    <div class="Edit-user pt-1 ml-5" style="width: 12rem;">
       <label for="firstName">First Name</label>
       <input class="form-control" id="firstName" name="firstName" type="text" value="${this.user.firstName}" required>
     </div>
-    <div class="form-group pt-1 ml-5" style="width: 12rem;">
+    <div class="Edit-user pt-1 ml-5" style="width: 12rem;">
       <label for="lastName">Last Name</label>
       <input class="form-control" id="lastName" name="lastName" type="text" value="${this.user.lastName}" required>
     </div>
-    <div class="form-group pt-1 ml-5" style="width: 12rem;">
-      <label for="pwd">Old Password</label>
+    <div class="Edit user pt-1 ml-5" style="width: 12rem;">
+      <label for="pwd">Password</label>
       <input type="password" class="form-control" id="pwd" name="pwd" type="text" value="">
     </div>
-    <div class="form-group pt-1 ml-5" style="width: 12rem;">
+    <div class="Edit-user pt-1 ml-5" style="width: 12rem;">
       <label for="newpwd">New Password</label>
       <input type="password" class="form-control" id="pwd" name="pwd" type="text" value="">
   </div>
@@ -36,8 +35,8 @@ class EditUser extends LitElement {
     `;
   }
 
+  // Checks if the input was correct or not
   updateUser(e) {
-    //data from the HTML form
     const dataForm = new FormData(e.target.form);
     console.log(e)
     fetch('api/updateUser.php', {
